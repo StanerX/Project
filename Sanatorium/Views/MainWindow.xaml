@@ -1,0 +1,136 @@
+﻿<Window x:Class="Sanatorium.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sanatorium"
+        mc:Ignorable="d"
+        Title="System obsługi sanatorium" WindowState="Maximized" Height="600" Width="1100">
+    
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="A" Modifiers="Ctrl" Command="{Binding NewReservationCommand }"/>
+        <KeyBinding Key="B" Modifiers="Ctrl" Command="{Binding AllReservationsCommand }"/>
+        <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding NewPatientCommand }"/>
+        <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding AllPatientsCommand }"/>
+        <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding NewServiceCommand }"/>
+        <KeyBinding Key="F" Modifiers="Ctrl" Command="{Binding AllServicesCommand }"/>
+        <KeyBinding Key="G" Modifiers="Ctrl" Command="{Binding CheckinCommand }"/>
+    </Window.InputBindings>
+    <Grid Style="{StaticResource FullGrid}">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        
+        <Menu Grid.Row="0" Grid.Column="0" >
+            <MenuItem Header="_Plik"/>
+            <MenuItem Header="_Rezerwacje">
+                <MenuItem Style="{StaticResource SubMenuItem}" Header="Dodaj rezerwację" InputGestureText="Ctrl +A" Command="{Binding NewReservationCommand}"/>
+                <MenuItem Style="{StaticResource SubMenuItem}" Header="Wszystkie rezerwacje"  InputGestureText="Ctrl +B" Command="{Binding AllReservationsCommand}"/>
+            </MenuItem>
+           
+            <MenuItem Header="Pacjenci">
+                <MenuItem Style="{StaticResource SubMenuItem}" Header="Dodaj pacjenta" InputGestureText="Ctrl +C" Command="{Binding NewPatientCommand}"/>
+                <MenuItem Style="{StaticResource SubMenuItem}" Header="Wszyscy pacjenci" InputGestureText="Ctrl +D" Command="{Binding AllPatientsCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Usługi">
+                <MenuItem Style="{StaticResource SubMenuItem}" Header="Dodaj usługi" InputGestureText="Ctrl +E" Command="{Binding NewServiceCommand}"/>
+                <MenuItem Style="{StaticResource SubMenuItem}" Header="Wszystkie usługi" InputGestureText="Ctrl +F" Command="{Binding AllServicesCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Personel">
+                <MenuItem Style="{StaticResource SubMenuItem}" Header="Dodaj doktora" InputGestureText="Ctrl +G" Command="{Binding NewDoctorCommand}"/>
+            </MenuItem>
+            <MenuItem Header="Raporty">
+                <MenuItem Style="{StaticResource SubMenuItem}" Header="Wynagagrodzenia Doktorów"  Command="{Binding ShowAllWynagrodzenia}"/>
+                <MenuItem Style="{StaticResource SubMenuItem}" Header="Zysk z pokoju"  Command="{Binding ShowRomeCash}"/>
+            </MenuItem>
+        </Menu>
+
+        <ToolBar Style="{StaticResource ToolbarNew}" Grid.Row="1" >
+            <ToggleButton Width="30" Height="30" Margin="5 0 5 5" Command="{Binding NewReservationCommand}">
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="/Views/home.png"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <ToggleButton Width="30" Height="30" Margin="0 0 5 0" Command="{Binding AllReservationsCommand}">
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="/Views/calendar.png"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <Separator/>
+            <ToggleButton Width="30" Height="30" Margin="5 0 5 0" Command="{Binding NewPatientCommand}">
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="/Views/user-add.png"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <ToggleButton Width="30" Height="30" Margin="0 0 5 0" Command="{Binding AllPatientsCommand}">
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="/Views/user.png"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <Separator/>
+            <ToggleButton Width="30" Height="30" Margin="5 0 5 0" Command="{Binding NewServiceCommand}">
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="/Views/plus.png"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <ToggleButton Width="30" Height="30" Margin="0 0 5 0" Command="{Binding AllServicesCommand}">
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="/Views/checkbox.png"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <Separator/>
+            <ToggleButton Width="30" Height="30" Margin="0 0 5 0" Command="{Binding CheckinCommand}">
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="/Views/list-check.png"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+        </ToolBar>
+        
+        <Grid Grid.Row="2" >
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" BorderBrush="Green" BorderThickness="2" CornerRadius="5" Margin="8 4 4 4">
+                <ScrollViewer>
+                    <HeaderedContentControl 
+                    Content="{Binding Path=Commands}"
+                    ContentTemplate="{StaticResource CommandsTemplate}"
+                    Style="{StaticResource MainHCCStyle}"   
+                  />
+                    </ScrollViewer>
+            </Border>
+                
+
+            <Border Grid.Column="1" BorderBrush="Gray" CornerRadius="5" Margin="4 4 8 4" Background="LightGreen">
+                <HeaderedContentControl                                      
+                    Content="{Binding Path=Workspaces}"
+                    ContentTemplate="{StaticResource WorkspacesTemplate}"
+                    Style="{StaticResource MainHCCStyle}" 
+                    
+                    />
+           
+            </Border>
+        </Grid>
+
+        <StatusBar Grid.Row="3" Background="LightGreen">
+            <StatusBarItem>
+                <TextBlock Text="Autor: Piotr Niziołek" Margin="3 0 0 3" Foreground="DarkBlue"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Text="WSB-NLU" Margin="3 0 0 3" Foreground="DarkBlue"/>
+            </StatusBarItem>
+        </StatusBar>
+
+    </Grid>
+</Window>
+

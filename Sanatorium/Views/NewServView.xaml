@@ -1,0 +1,55 @@
+﻿<local:JedenViewBase x:Class="Sanatorium.Views.NewServView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sanatorium.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleResources.xaml"/>
+    </UserControl.Resources>
+    <!--Full tab grid-->
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Label Style="{StaticResource UpperTitleLabel}" Grid.Row="0" Content="Dodaj nową usługe" />
+        <!--Personal info grid-->
+        <Grid Grid.Row="1" Margin="4">
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Nazwa:"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Cena:" />
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Nazwa, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Cena, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Content="Wykonujacy:"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Wykonujacy, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" />
+            <Label Grid.Row="3" Grid.Column="0" Content="Rabat:"  />
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Rabat, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" />
+
+        </Grid>
+
+    </Grid>
+</local:JedenViewBase>

@@ -1,0 +1,266 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:Sanatorium.ViewModels"
+                    xmlns:vw="clr-namespace:Sanatorium.Views"
+                    >
+
+    <!-- connecting View with ViewModel-->
+    <DataTemplate DataType="{x:Type vm:NewDocktorViewModel}">
+        <vw:NewDocktorView/>
+    </DataTemplate>  
+    <DataTemplate DataType="{x:Type vm:AllDoctorsViewModel}">
+        <vw:AllDocktorsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllReservationsViewModel}">
+        <vw:AllReservationsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewReservationViewModel}">
+        <vw:NewReservationView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewServiceViewModel}">
+        <vw:NewServiceView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllServicesViewModel}">
+        <vw:AllServicesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewPatientViewModel}">
+        <vw:NewPatientView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllPatientsViewModel}">
+        <vw:AllPatientsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewRegistrationViewModel}">
+        <vw:NewRegistrationView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllRomeVievModel}">
+        <vw:AllRomeView/>
+    </DataTemplate> 
+    <DataTemplate DataType="{x:Type vm:NewRomeViewModel}">
+        <vw:NewRomeView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewNFZViewModel}">
+        <vw:NewNFZView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllNFZViewModel}">
+        <vw:AllNFZView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllRegistrationViewModel}">
+        <vw:AllRegistrationView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewInvoiceViewModel}">
+        <vw:NewInoviceView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllInvoiceViewModel}">
+        <vw:AllInvoiceView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewTimetableViewModel}">
+        <vw:NewTimetableView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllTimeTableViewModel}">
+        <vw:AllTimeTableView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewStaffViewModel}">
+        <vw:NewStaffView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllStaffViewModel}">
+        <vw:AllStaffView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewSheduleViewModel}">
+        <vw:NewScheduleView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllSheduleViewModel}">
+        <vw:AllScheduleView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewFinancesViewModel}">
+        <vw:NewFinancesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllFinancesViewModel}">
+        <vw:AllFinancesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewOfficeViewModel}">
+        <vw:NewOfficeView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllOfficeViewModel}">
+        <vw:AllOfficeView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewUnitViewModel}">
+        <vw:NewUnitView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllUnitViewModel}">
+        <vw:AllUnitView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewServViewModel}">
+        <vw:NewServView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllServViewModel}">
+        <vw:AllServView/>
+    </DataTemplate>
+
+
+    <!--Logic-->
+    <!--<DataTemplate DataType="{x:Type vm:SkierowaniaViewModel}">
+        <vw:SkierowaniaView/>
+    </DataTemplate>-->
+    <DataTemplate DataType="{x:Type vm:WyplatyViewModel}">
+        <vw:WyplatyView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:RomeCashViewModel}">
+        <vw:RomeCashView/>
+    </DataTemplate>
+
+    <!--Main window style-->
+    <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                
+        <!--This template ensures that content of a HeaderedContentControl 
+        fills the available vertical space.-->
+
+        <ControlTemplate TargetType="{x:Type HeaderedContentControl}">
+                    <DockPanel>
+                        <ContentPresenter 
+        DockPanel.Dock="Top"
+        ContentSource="Header" 
+        ContentTemplate="{TemplateBinding HeaderTemplate}" 
+        />
+        <ContentPresenter 
+        ContentSource="Content" 
+        ContentTemplate="{TemplateBinding ContentTemplate}" 
+        />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--This style ensures that the borders in the main window are consistent.-->
+  
+    <Style x:Key="MainBorderStyle" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="Black" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+
+    <!--Styl menu bocznego.-->
+
+    <DataTemplate x:Key="CommandsTemplate">
+        <ItemsControl IsTabStop="False" ItemsSource="{Binding}"  Margin="0" BorderBrush="YellowGreen" Background="YellowGreen">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Button 
+                Content="{Binding DisplayName}" 
+                Command="{Binding Path=Command}" 
+                Margin="5" 
+                Padding="5" 
+                Background="DarkGray" 
+                BorderThickness="0 0 0 1" 
+                HorizontalContentAlignment="Left" 
+                BorderBrush="Black"       
+                Foreground="Aqua"
+            />
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DataTemplate>
+
+  <!--This template explains how to render 
+  a tab item with a close button.-->
+
+    <DataTemplate x:Key="ClosableTabItemTemplate">
+        <DockPanel Width="120">
+        <Button 
+        Command="{Binding Path=CloseCommand}"
+        Content="X"
+        DockPanel.Dock="Right"
+        Focusable="False"
+        FontSize="10"
+        FontWeight="Light"  
+        Margin="0,1,0,0"
+        Padding="0 0 0 0"
+        BorderThickness="0"
+        VerticalContentAlignment="Center"
+        Width="16" Height="16" 
+        Background="white"
+        />
+        <ContentPresenter 
+        Content="{Binding Path=DisplayName}" 
+        VerticalAlignment="Center"
+        />
+        </DockPanel>
+    </DataTemplate>
+   
+  <!--This template explains how to render the 'Workspace' content area in the main window.-->
+  
+    <DataTemplate x:Key="WorkspacesTemplate">
+      <TabControl 
+      IsSynchronizedWithCurrentItem="True" 
+      ItemsSource="{Binding}" 
+      ItemTemplate="{StaticResource ClosableTabItemTemplate}"
+      BorderThickness="0"
+      BorderBrush="white"
+      Margin="5" 
+      Background="DarkGray"
+      />
+    </DataTemplate>
+
+    <!--Styl toolbara-->
+
+    <Style x:Key="ToolbarNew" TargetType="{x:Type ToolBar}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Template">
+            <Setter.Value>
+            <ControlTemplate TargetType="{x:Type ToolBar}">
+            <Border x:Name="Border"  CornerRadius="5" BorderThickness="0" Background="Wheat" Margin="8 2 8 4">
+            <DockPanel>
+            <ToggleButton Visibility="Collapsed"  DockPanel.Dock="Right" IsEnabled="False" IsChecked="False" ClickMode="Press">
+            </ToggleButton>
+            <ToolBarPanel x:Name="PART_ToolBarPanel" IsItemsHost="true" Margin="0,0,0,0"/>
+            </DockPanel>
+            </Border>
+            </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Tab items style in the corner of workspace-->
+    <Style TargetType="TabItem">
+        <Setter Property="Foreground" Value="LightGray"/>
+        <Setter Property="Background" Value="Gray"/>
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+
+
+
+    <!--Styl separatora-->
+    <Style x:Key="{x:Static ToolBar.SeparatorStyleKey}" TargetType="{x:Type Separator}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="ForestGreen"/>
+    </Style>
+    <!--Styl tła okna głównego-->
+    <Style x:Key="FullGrid" TargetType="{x:Type Grid}">
+        <Setter Property="Background" Value="DarkSlateGray"/>
+    </Style>
+    <!--Styl menu górnego-->
+    <Style TargetType="{x:Type Menu}">
+        <Setter Property="Margin" Value="4"/>
+        <Setter Property="Background" Value="Wheat"/>
+        <Setter Property="BorderThickness" Value="0 0 0 1"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="Foreground" Value="Blue"/>
+    </Style>
+    <!--Styl menuitema-->
+    <Style x:Key="SubMenuItem" TargetType="{x:Type MenuItem}">
+        <Setter Property="Background" Value="Gray"/>
+        <Setter Property="Foreground" Value="LightCyan"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="Beige"/>
+    </Style>
+
+</ResourceDictionary>

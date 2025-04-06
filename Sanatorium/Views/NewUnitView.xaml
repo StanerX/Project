@@ -1,0 +1,73 @@
+﻿<local:JedenViewBase x:Class="Sanatorium.Views.NewUnitView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sanatorium.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleResources.xaml"/>
+    </UserControl.Resources>
+    <!--Full tab grid-->
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Label Style="{StaticResource UpperTitleLabel}" Grid.Row="0" Content="Dodaj nowe Zgłoszenie " />
+        <!--Personal info grid-->
+        <Grid Grid.Row="1" Margin="4">
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="5" Grid.Row="0" Style="{StaticResource SearchButton}"  Command="{Binding showNFZCommand}"/>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Nazwa:"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Nazwa, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"/>
+            <Label Grid.Row="0" Grid.Column="2" Content="Kod:"/>
+            <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding Path=Kod, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Miejscowosc:"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Miejscowosc, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Grid.Row="1" Grid.Column="2" Content="Lekarzkier:"/>
+            <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding Path=Lekarzkier, UpdateSourceTrigger=PropertyChanged}" />
+
+            <Label Grid.Row="2" Grid.Column="0" Content="Przypadlosc:"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Przypadlosc, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Grid.Column="0" Grid.Row="4" Content="NFZ Nazwa:" />
+            <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Path=NFZNazwa, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"/>
+
+            <Label Grid.Column="2" Grid.Row="2" Content="NFZ Kod:" />
+            <TextBox Grid.Column="3" Grid.Row="2" Text="{Binding Path=NFZKod, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"/>
+
+            <Label Grid.Column="2" Grid.Row="4" Content="NFZ Miasto:" />
+            <TextBox Grid.Column="3" Grid.Row="4" Text="{Binding Path=NFZMiasto, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"/>
+
+            <Label Grid.Column="0" Grid.Row="5" Content="NFZ Wojewodztwo:" />
+            <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding Path=NFZWojewodztwo, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"/>
+
+
+        </Grid>
+
+    </Grid>
+</local:JedenViewBase>

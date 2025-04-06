@@ -1,0 +1,75 @@
+﻿<local:JedenViewBase x:Class="Sanatorium.Views.NewFinancesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sanatorium.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleResources.xaml"/>
+    </UserControl.Resources>
+    <!--Full tab grid-->
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Label Style="{StaticResource UpperTitleLabel}" Grid.Row="0" Content="Dodaj nowy numer " />
+        <!--Personal info grid-->
+        <Grid Grid.Row="1" Margin="4">
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+                <RowDefinition  Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="5" Grid.Row="0" Style="{StaticResource SearchButton}"  Command="{Binding showDoctorsCommand}"/>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Stan:"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Stan, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+            <Label Grid.Row="0" Grid.Column="2" Content="Konto:"/>
+            <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding Path=Konto, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Bank:"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Bank, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+            <Label Grid.Row="1" Grid.Column="2" Content="Wynagrodzenia:"/>
+            <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding Path=Wynagrodzenia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+
+            <Label Grid.Row="2" Grid.Column="0" Content="Dokumnety:"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Dokumnety, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
+            <Label Grid.Column="0" Grid.Row="4" Content="Stan na dzień:" />
+            <DatePicker Grid.Column="1" Grid.Row="4" SelectedDate="{Binding Path=Data, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Grid.Column="2" Grid.Row="2" Content="Doktor Imie:" />
+            <TextBox Grid.Column="3" Grid.Row="2" Text="{Binding Path=DoktorImie, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
+            <Label Grid.Column="2" Grid.Row="4" Content="Doktor Nazwisko:" />
+            <TextBox Grid.Column="3" Grid.Row="4" Text="{Binding Path=DoktorNazwisko, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
+            <Label Grid.Column="0" Grid.Row="5" Content="Doktor Stanowisko:" />
+            <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding Path=DoktorStanowisko, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Grid.Column="2" Grid.Row="5" Content="Doktor Specjalizacja:" />
+            <TextBox Grid.Column="3" Grid.Row="5" Text="{Binding Path=DoktorSpecjalizacja, UpdateSourceTrigger=PropertyChanged}"/>
+
+        </Grid>
+        
+    </Grid>
+</local:JedenViewBase>

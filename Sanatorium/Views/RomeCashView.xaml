@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Sanatorium.Views.RomeCashView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sanatorium.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleResources.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Margin="8" Background="LemonChiffon" Height="175" Width="380" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="33"/>
+                    <RowDefinition Height="33"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" HorizontalContentAlignment="Center" Content="Zysk z pokoju" />
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Margin="3" Content="Wybierz Ilość Pokoi"/>
+                    <ComboBox Grid.Column="1" Margin="3" ItemsSource="{Binding RomeComboBoxItems}" 
+                              DisplayMemberPath="Value"
+                              SelectedValuePath="Key"
+                              SelectedValue="{Binding Path=Id_Pokoju,Mode=TwoWay}"
+                              />
+                </Grid>
+                <Button Grid.Row="2" Margin="3" Content="Oblicz cene najmu" Command="{Binding IloscCommnad}"/>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Margin="3" Content="Utarg z wynajmu:"/>
+                    <Label Grid.Row="1" Margin="3"/>
+                    <Label Grid.Row="2" Grid.Column="1" Margin="1" Content="{Binding Zysk, UpdateSourceTrigger=PropertyChanged}"/>
+
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>
